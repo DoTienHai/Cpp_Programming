@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @author HaiDT25
+ * @brief This project implements vector by using class.
+ * @version 0.1
+ * @date 2024-01-25
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include <iostream>
 #define LOW_THRESHOLD 0.25
 #define HIGH_THRESHOLD 0.75
