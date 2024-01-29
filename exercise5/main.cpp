@@ -34,6 +34,7 @@ int QuayLai()
 int main()
 {
     QuanLy QuanLyKhachSan;
+    
     int TuyChon = 0, DongChuongTrinh = 1;
     while (DongChuongTrinh)
     {

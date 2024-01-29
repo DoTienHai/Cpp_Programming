@@ -23,7 +23,7 @@ private:
     string email;
     EMPLOYEE_TYPE employeeType;
     static int employeeCount;
-    vector<Certificate> certifcated;
+    vector<Certificate> certificated;
 
 public:
     Employee(/* args */);
@@ -53,5 +53,9 @@ public:
     void showInfo();
     virtual void showMe() = 0;
 };
+
+
+// extern int Employee::employeeCount;
+// Employee::employeeCount = 0;
 
 #endif // !EMPLOYEE_H

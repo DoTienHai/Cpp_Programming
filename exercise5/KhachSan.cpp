@@ -73,10 +73,9 @@ void KhachSan::HienThiPhongTheoLoai(vector<Phong> PhongVector)
          << endl;
     for (Phong &phong : PhongVector)
     {
-        cout << setw(20) << setfill(' ') << left << phong.GetMaSoPhong()
+        cout << setw(10) << setfill(' ') << left << phong.GetMaSoPhong()
              << setw(10) << setfill(' ') << left << phong.GetGia()
              << setw(20) << setfill(' ') << left << (phong.getTrangThai() ? "CO NGUOI" : "TRONG")
-             << &phong
              << endl;
     }
 }

@@ -1,33 +1,124 @@
 #include <iostream>
+#include "EmployeeManager.h"
 using namespace std;
 
-enum TINH_NANG
+enum FUNCTION
 {
-    QUAY_LAI = 0,
-    THEM_KHACH_HANG = 1,
-    XOA_KHACH_HANG = 2,
-    THEM_LUOT_THUE_MOI = 3,
-    XOA_LUOT_THUE = 4,
-    TRA_PHONG = 5,
-    HIEN_THI_DANH_SACH_PHONG = 6,
-    HIEN_THI_DANH_SACH_KHACH_HANG = 7,
-    HIEN_THI_DANH_SACH_LUOT_THUE = 8,
-    DONG_CHUONG_TRINH = 9,
+    BACK = 0,
+    ADD_EMPLOYEE = 1,
+    UPDATE_EMPLOYEE = 2,
+    DELETE_EMPLOYEE = 3,
+    SEARCH_EMPLOYEE = 4,
+    DISPLAY = 5,
+    DISPLAY_EXPERIENCE = 6,
+    DISPLAY_FRESHER = 7,
+    DISPLAY_INTERN = 8,
+    EXIT = 9,
 };
 
-void QuayLai()
+void back()
 {
     int ret = 1;
     while (ret)
     {
-        cout << "Nhan " << QUAY_LAI << " va enter de quay lai." << endl;
+        cout << "Enter " << BACK << " and ENTER to back." << endl;
         cin >> ret;
-        system("cls");
+        system("clear");
     }
 }
-
 int main()
 {
+    EmployeeManager manager;
+    int option = 0, exit = 1;
+    while (exit)
+    {
+        cout << "Choose one of the functions below: " << endl;
+        cout << ADD_EMPLOYEE << ". Add an employee." << endl;
+        cout << UPDATE_EMPLOYEE << ". Update employee's infomation." << endl;
+        cout << DELETE_EMPLOYEE << ". Delete an employee by ID." << endl;
+        cout << SEARCH_EMPLOYEE << ". search and display an employee by ID." << endl;
+        cout << DISPLAY << ". Display all employees." << endl;
+        cout << DISPLAY_EXPERIENCE << ". Display all experience." << endl;
+        cout << DISPLAY_FRESHER << ". Display all fresher." << endl;
+        cout << DISPLAY_INTERN << ". Display all intern." << endl;
+        cout << EXIT << ". Exit" << endl;
+        cin >> option;
+        system("clear");
+
+        switch (option)
+        {
+        case ADD_EMPLOYEE:
+        {
+            manager.addEmployee();
+
+            manager.display();
+            back();
+        }
+        break;
+
+        case UPDATE_EMPLOYEE:
+        {
+        }
+        break;
+        case DELETE_EMPLOYEE:
+        {
+        }
+        case SEARCH_EMPLOYEE:
+        {
+        }
+        break;
+            break;
+        case DISPLAY:
+        {
+            manager.display();
+            back();
+        }
+        break;
+        case DISPLAY_EXPERIENCE:
+        {
+            manager.displayExperience();
+            back();
+        }
+        break;
+        case DISPLAY_FRESHER:
+        {
+            manager.displayFresher();
+            back();
+        }
+        break;
+        case DISPLAY_INTERN:
+        {
+            manager.displayIntern();
+            back();
+        }
+        break;
+        case EXIT:
+        {
+            exit = 0;
+            cout << "GOOD BYE!";
+        }
+        break;
+        default:
+        {
+            while (option < ADD_EMPLOYEE || option > EXIT)
+            {
+                system("clear");
+                cout << "Choose one of the functions below: " << endl;
+                cout << ADD_EMPLOYEE << ". Add an employee." << endl;
+                cout << UPDATE_EMPLOYEE << ". Update employee's infomation." << endl;
+                cout << DELETE_EMPLOYEE << ". Delete an employee by ID." << endl;
+                cout << SEARCH_EMPLOYEE << ". search and display an employee by ID." << endl;
+                cout << DISPLAY << ". Display all employees." << endl;
+                cout << DISPLAY_EXPERIENCE << ". Display all experience." << endl;
+                cout << DISPLAY_FRESHER << ". Display all fresher." << endl;
+                cout << DISPLAY_INTERN << ". Display all intern." << endl;
+                cout << EXIT << ". Exit" << endl;
+                cin >> option;
+            }
+        }
+        break;
+        }
+    }
 
     return 0;
 }

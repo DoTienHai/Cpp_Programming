@@ -1,9 +1,11 @@
 #include "Employee.h"
 
+
 // Implementations of the getter and setter methods
 Employee::Employee() : birthDay(0), employeeType(EXPERIENCE)
 {
-    // Default constructor
+    // Default constructor;
+    employeeCount = 0;
     employeeCount++;
 }
 Employee::Employee(const string &id, const string &fullName, const unsigned int &birthDay,
@@ -11,6 +13,8 @@ Employee::Employee(const string &id, const string &fullName, const unsigned int 
     : ID(id), fullName(fullName), birthDay(birthDay), phone(phone), email(email),
       employeeType(employeeType)
 {
+    employeeCount = 0;
+    employeeCount++;
 }
 string Employee::getID() const
 {
@@ -44,7 +48,7 @@ EMPLOYEE_TYPE Employee::getEmployeeType() const
 
 vector<Certificate> Employee::getCertificated()
 {
-    return certifcated;
+    return certificated;
 }
 
 int Employee::getEmployeeCount() const
@@ -94,6 +98,6 @@ void Employee::showInfo()
     cout << "Birthday: " << birthDay << endl;
     cout << "Phone: " << phone << endl;
     cout << "Email: " << email << endl;
-    cout << "Employee type" << employeeType << endl;
+    cout << "Employee type: " << employeeType << endl;
     cout << "Employee count: " << employeeCount << endl;
 }

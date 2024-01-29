@@ -17,10 +17,10 @@ EmployeeManager::~EmployeeManager()
 
 void EmployeeManager::addEmployee()
 {
-    string ID;
+    string ID = "123";
     string fullName;
     string birthdayString;
-    unsigned int birthDay;
+    unsigned int birthDay = 12412;
     string phone;
     string email;
     int employeeType;
@@ -42,18 +42,54 @@ void EmployeeManager::addEmployee()
     switch (employeeType)
     {
     case EXPERIENCE:
-    
-        // int expInYear;
-        // string proSkill;
-        break;
+    {
+        int expInYear;
+        string proSkill;
+        cout << "Enter employee's ExpInYear." << endl;
+        cin >> expInYear;
+        cout << "Enter employee's ProSkill." << endl;
+        cin >> proSkill;
+        employeeTable.push_back(new Experience(ID, fullName, birthDay, phone, email, (enum EMPLOYEE_TYPE)employeeType, expInYear, proSkill));
+    }
+
+    break;
     case FRESHER:
-        /* code */
-        break;
+    {
+        unsigned int graduationDate;
+        int graduationRank;
+        string education;
+        cout << "Enter employee's Graduation date dd/mm/yy." << endl;
+        cin >> graduationDate;
+        cout << "Enter employee's graduation rank." << endl;
+        cout << EXCELLENT << ". Excellent." << endl;
+        cout << VERY_GOOG << ". Very good." << endl;
+        cout << GOOD << ". Good." << endl;
+        cout << AVERAGE_GOOD << ". Average good." << endl;
+        cout << ORDINARY << ". Ordinary." << endl;
+        cin >> graduationRank;
+        cout << "Enter employee's education." << endl;
+        cin >> education;
+        employeeTable.push_back(new Fresher(ID, fullName, birthDay, phone, email, (enum EMPLOYEE_TYPE)employeeType, graduationDate, (enum GRADUATION_RANK)graduationRank, education));
+    }
+    break;
     case INTERN:
-        /* code */
-        break;
+    {
+        string major;
+        int semester;
+        string university;
+        cout << "Enter employee's major." << endl;
+        cin >> major;
+        cout << "Enter employee's semester." << endl;
+        cin >> semester;
+        cout << "Enter employ's university." << endl;
+        cin >> university;
+        employeeTable.push_back(new Intern(ID, fullName, birthDay, phone, email, (enum EMPLOYEE_TYPE)employeeType, major, semester, university));
+    }
+    break;
     default:
-        break;
+    {
+    }
+    break;
     }
 }
 void EmployeeManager::updateEmployee() {}
@@ -88,6 +124,7 @@ vector<Employee *>::iterator EmployeeManager::searchEmployee(string ID)
 
 void EmployeeManager::display()
 {
+    system("clear");
     for (Employee *employeePtr : employeeTable)
     {
         employeePtr->showMe();
@@ -96,6 +133,7 @@ void EmployeeManager::display()
 }
 void EmployeeManager::displayExperience()
 {
+    system("clear");
     for (Employee *employeePtr : employeeTable)
     {
         if (employeePtr->getEmployeeType() == EXPERIENCE)
@@ -109,6 +147,7 @@ void EmployeeManager::displayFresher()
 {
     for (Employee *employeePtr : employeeTable)
     {
+        system("clear");
         if (employeePtr->getEmployeeType() == FRESHER)
         {
             employeePtr->showMe();
@@ -118,6 +157,7 @@ void EmployeeManager::displayFresher()
 }
 void EmployeeManager::displayIntern()
 {
+    system("clear");
     for (Employee *employeePtr : employeeTable)
     {
         if (employeePtr->getEmployeeType() == INTERN)
