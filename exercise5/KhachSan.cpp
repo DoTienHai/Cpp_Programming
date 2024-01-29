@@ -20,7 +20,20 @@ KhachSan::~KhachSan()
 {
 }
 
-vector<Phong>::iterator KhachSan::GetPhong(string MaSoPhong)
+vector<Phong> KhachSan::GetPhongTheoLoaiA()
+{
+    return this->PhongLoaiA;
+}
+vector<Phong> KhachSan::GetPhongTheoLoaiB()
+{
+    return this->PhongLoaiB;
+}
+vector<Phong> KhachSan::GetPhongTheoLoaiC()
+{
+    return this->PhongLoaiC;
+}
+
+vector<Phong>::iterator KhachSan::TimKiemPhong(string MaSoPhong)
 {
     for (vector<Phong>::iterator it = this->PhongLoaiA.begin(); it != this->PhongLoaiA.end(); it++)
     {
@@ -62,7 +75,8 @@ void KhachSan::HienThiPhongTheoLoai(vector<Phong> PhongVector)
     {
         cout << setw(20) << setfill(' ') << left << phong.GetMaSoPhong()
              << setw(10) << setfill(' ') << left << phong.GetGia()
-             << setw(20) << setfill(' ') << left << (phong.getTrangThai()?"CO NGUOI":"TRONG")
+             << setw(20) << setfill(' ') << left << (phong.getTrangThai() ? "CO NGUOI" : "TRONG")
+             << &phong
              << endl;
     }
 }
@@ -72,6 +86,4 @@ void KhachSan::HienThi()
     this->HienThiPhongTheoLoai(this->PhongLoaiA);
     this->HienThiPhongTheoLoai(this->PhongLoaiB);
     this->HienThiPhongTheoLoai(this->PhongLoaiC);
-
-
 }

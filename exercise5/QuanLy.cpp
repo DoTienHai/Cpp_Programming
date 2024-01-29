@@ -41,9 +41,10 @@ void QuanLy::XoaKhachHang()
 
 vector<Nguoi>::iterator QuanLy::TimKiemKhachHang(string CCCD)
 {
-    for (vector<Nguoi>::iterator it = this->DanhSachKhachHang.begin(); it != this->DanhSachKhachHang.end(); ++it)
+
+    for (vector<Nguoi>::iterator it = this->DanhSachKhachHang.begin(); it != this->DanhSachKhachHang.end(); it++)
     {
-        if (it->GetCCCD() == CCCD)
+        if ((*it).GetCCCD() == CCCD)
         {
             return it;
         }
@@ -54,31 +55,47 @@ vector<Nguoi>::iterator QuanLy::TimKiemKhachHang(string CCCD)
 void QuanLy::ThemLuotThue()
 {
     string CCCD;
+    Nguoi *khachHang = nullptr;
     string MaSoPhong;
+    Phong *PhongThue = nullptr;
 
     cout << "Moi nhap CCCD de xac dinh khach hang da toi day chua." << endl;
     cin >> CCCD;
+
     vector<Nguoi>::iterator itKhachHang = this->TimKiemKhachHang(CCCD);
     if (itKhachHang == this->DanhSachKhachHang.end())
     {
-        cout << "Khach hang chua tung den day. Can mot so thong tin ca nhan cua khach hang." << endl;
-        this->ThemKhachHang();
+        cout << "Khach hang chua tung den day. Can them mot so thong tin ca nhan cua khach hang." << endl;
+        string HoTen;
+        int Tuoi;
+        cout << "Moi nhap ten khach hang: ";
+        cin >> HoTen;
+        cout << "Moi nhap tuoi khach hang: ";
+        cin >> Tuoi;
+        this->DanhSachKhachHang.push_back(Nguoi(HoTen, Tuoi, CCCD));
+        itKhachHang = this->TimKiemKhachHang(CCCD);
     }
+    khachHang = &(*itKhachHang);
+
     system("cls");
     this->HienThiDanhSachPhong();
     cout << "Nhap ma so phong muon thue: " << endl;
     cin >> MaSoPhong;
-    Phong *PhongThue = &(*KhachSanABC.GetPhong(MaSoPhong));
-
-    auto now = chrono::time_point_cast<chrono::seconds>(chrono::system_clock::now());
-    time_t currentTime = chrono::system_clock::to_time_t(now);
-
-    PhongThue->setTrangThai(CO_NGUOI_THUE);
-    Nguoi * khachHang = &(*itKhachHang);
-    this->DanhSachLuotThue.push_back(LuotThue(khachHang, PhongThue, currentTime, currentTime));
-    cout << 2;
-    PhongThue = nullptr;
-    cout << 3;
+    if (KhachSanABC.TimKiemPhong(MaSoPhong) != this->KhachSanABC.GetPhongTheoLoaiA().end())
+    {
+        PhongThue = &(*KhachSanABC.TimKiemPhong(MaSoPhong));
+        if (PhongThue->getTrangThai() == PHONG_TRONG)
+        {
+            PhongThue->setTrangThai(CO_NGUOI_THUE);
+            auto now = chrono::time_point_cast<chrono::seconds>(chrono::system_clock::now());
+            time_t currentTime = chrono::system_clock::to_time_t(now);
+            this->DanhSachLuotThue.push_back(LuotThue(khachHang, PhongThue, currentTime, currentTime));
+        }else{
+            cout << "Phong da co nguoi thue." << endl;
+        }
+    }else{
+        cout << "Nhap sai ma phong." << endl;
+    }
 }
 void QuanLy::XoaLuotThue()
 {
@@ -109,11 +126,17 @@ void QuanLy::TraPhong()
     {
         auto now = chrono::time_point_cast<chrono::seconds>(chrono::system_clock::now());
         time_t currentTime = chrono::system_clock::to_time_t(now);
-        LuotThue *temp = &(*it);
-        temp->SetThoiDiemTra(currentTime);
-        unsigned int NgayThue = temp->GetThoiDiemTra() - temp->GetThoiDiemTao() + 11;
+        LuotThue *LuotThue = &(*it);
+        LuotThue->SetThoiDiemTra(currentTime);
+        unsigned int NgayThue = LuotThue->GetThoiDiemTra() - LuotThue->GetThoiDiemTao() + 11;
         cout << "Ngay Thue: " << NgayThue << endl;
-        cout << "So tien can thanh toan: " << temp->GetPhongThue().GetGia() * NgayThue << endl;
+        int tt;
+        cout << "So tien can thanh toan: " << LuotThue->GetPhongThue().GetGia() * NgayThue << endl;
+        cout << "Thanh toan bang: " << endl;
+        cout << TIEN_MAT << ". Tien mat." << endl;
+        cout << CHUYEN_KHOAN << ". Chuyen khoan." << endl;
+        cin >> tt;
+        LuotThue->SetThanhToan((enum THANH_TOAN)tt);
     }
     else
     {
@@ -166,17 +189,19 @@ void QuanLy::HienThiDanhSachLuotThue()
          << setw((100 - len) / 2) << setfill('_') << right << "" << endl;
     cout << setw(20) << setfill(' ') << left << "Ho va Ten"
          << setw(10) << setfill(' ') << left << "Phong"
-         << setw(20) << setfill(' ') << left << "MaLuot"
+         << setw(30) << setfill(' ') << left << "MaLuot"
          << setw(20) << setfill(' ') << left << "Ngay thue"
          << setw(20) << setfill(' ') << left << "Ngay tra"
+         << setw(20) << setfill(' ') << left << "Thanh Toan"
          << endl;
     for (LuotThue &LuotThue : this->DanhSachLuotThue)
     {
         cout << setw(20) << setfill(' ') << left << LuotThue.GetKhachHang().GetHoTen()
              << setw(10) << setfill(' ') << left << LuotThue.GetPhongThue().GetMaSoPhong()
-             << setw(20) << setfill(' ') << left << LuotThue.GetMaLuot()
+             << setw(30) << setfill(' ') << left << LuotThue.GetMaLuot()
              << setw(20) << setfill(' ') << left << LuotThue.GetThoiDiemTao()
              << setw(20) << setfill(' ') << left << LuotThue.GetThoiDiemTra()
+             << setw(20) << setfill(' ') << left << (LuotThue.GetThanhToan() == CHUA_THANH_TOAN ? "Chua Thanh Toan" : (LuotThue.GetThanhToan() == CHUYEN_KHOAN ? "Chuyen khoan" : "Tien mat"))
              << endl;
     }
 }

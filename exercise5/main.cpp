@@ -73,17 +73,19 @@ int main()
             break;
         case TRA_PHONG:
             QuanLyKhachSan.TraPhong();
-            QuanLyKhachSan.HienThiDanhSachLuotThue();
             QuayLai();
             break;
         case HIEN_THI_DANH_SACH_PHONG:
             QuanLyKhachSan.HienThiDanhSachPhong();
+            QuayLai();
             break;
         case HIEN_THI_DANH_SACH_KHACH_HANG:
             QuanLyKhachSan.HienThiDanhSachKhachHang();
+            QuayLai();
             break;
         case HIEN_THI_DANH_SACH_LUOT_THUE:
             QuanLyKhachSan.HienThiDanhSachLuotThue();
+            QuayLai();
             break;
         case DONG_CHUONG_TRINH:
             DongChuongTrinh = 0;

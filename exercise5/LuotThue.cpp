@@ -1,13 +1,14 @@
 #include "LuotThue.h"
 
 LuotThue::LuotThue(/* args */) {}
-LuotThue::LuotThue(Nguoi *KhachHang, Phong *PhongThue, const time_t ThoiDiemTao, const time_t ThoiDiemTra)
+LuotThue::LuotThue(Nguoi *KhachHang, Phong *PhongThue, const unsigned int ThoiDiemTao, const unsigned int ThoiDiemTra)
 {
     this->SetKhachHang(KhachHang);
     this->SetPhongThue(PhongThue);
     this->SetThoiDiemTao(ThoiDiemTao);
     this->SetThoiDiemTra(ThoiDiemTra);
-    this->SetMaLuot(KhachHang->GetCCCD());
+    this->SetMaLuot(KhachHang->GetCCCD() + "_" + to_string(ThoiDiemTao));
+    this->SetThanhToan(CHUA_THANH_TOAN);
 }
 
 LuotThue::~LuotThue()
@@ -24,11 +25,11 @@ void LuotThue::SetPhongThue(Phong *PhongThue)
 {
     this->PhongThue = PhongThue;
 }
-void LuotThue::SetThoiDiemTao(const time_t &ThoiDiemTao)
+void LuotThue::SetThoiDiemTao(const unsigned int &ThoiDiemTao)
 {
     this->ThoiDiemTao = ThoiDiemTao;
 }
-void LuotThue::SetThoiDiemTra(const time_t &ThoiDiemTra)
+void LuotThue::SetThoiDiemTra(const unsigned int &ThoiDiemTra)
 {
     this->ThoiDiemTra = ThoiDiemTra;
 }
@@ -36,6 +37,10 @@ void LuotThue::SetMaLuot(string MaLuot)
 {
     this->MaLuot = MaLuot;
 }
+void LuotThue::SetThanhToan(enum THANH_TOAN ThanhToan){
+    this->ThanhToan = ThanhToan;
+}
+
 
 Nguoi LuotThue::GetKhachHang()
 {
@@ -45,15 +50,19 @@ Phong LuotThue::GetPhongThue()
 {
     return *(this->PhongThue);
 }
-time_t LuotThue::GetThoiDiemTao()
+unsigned int LuotThue::GetThoiDiemTao()
 {
     return this->ThoiDiemTao;
 }
-time_t LuotThue::GetThoiDiemTra()
+unsigned int LuotThue::GetThoiDiemTra()
 {
     return this->ThoiDiemTra;
 }
 string LuotThue::GetMaLuot()
 {
     return this->MaLuot;
+}
+
+enum THANH_TOAN LuotThue::GetThanhToan(){
+ return this->ThanhToan;
 }

@@ -26,11 +26,14 @@ public:
     KhachSan();
     ~KhachSan();
 
-    vector<Phong>::iterator GetPhong(string MaSoPhong);
+    vector<Phong> GetPhongTheoLoaiA();
+    vector<Phong> GetPhongTheoLoaiB();
+    vector<Phong> GetPhongTheoLoaiC();
+
+    vector<Phong>::iterator TimKiemPhong(string MaSoPhong);
 
     void HienThiPhongTheoLoai(vector<Phong> PhongVector);
     void HienThi();
-
 };
 
 #endif // !KHACH_SAN_H
