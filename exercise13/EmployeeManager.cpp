@@ -42,8 +42,9 @@ void EmployeeManager::addEmployee()
     switch (employeeType)
     {
     case EXPERIENCE:
-        int expInYear;
-        string proSkill;
+    
+        // int expInYear;
+        // string proSkill;
         break;
     case FRESHER:
         /* code */

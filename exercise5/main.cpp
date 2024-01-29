@@ -52,44 +52,44 @@ int main()
         switch (TuyChon)
         {
         case THEM_KHACH_HANG:
-            QuanLyKhachSan.ThemKhachHang();
+{            QuanLyKhachSan.ThemKhachHang();
             QuanLyKhachSan.HienThiDanhSachKhachHang();
-            QuayLai();
+            QuayLai();}
             break;
         case XOA_KHACH_HANG:
-            QuanLyKhachSan.XoaKhachHang();
+{            QuanLyKhachSan.XoaKhachHang();
             QuanLyKhachSan.HienThiDanhSachKhachHang();
-            QuayLai();
+            QuayLai();}
             break;
         case THEM_LUOT_THUE_MOI:
-            QuanLyKhachSan.ThemLuotThue();
+{            QuanLyKhachSan.ThemLuotThue();
             QuanLyKhachSan.HienThiDanhSachLuotThue();
-            QuayLai();
+            QuayLai();}
             break;
         case XOA_LUOT_THUE:
-            QuanLyKhachSan.XoaLuotThue();
+{            QuanLyKhachSan.XoaLuotThue();
             QuanLyKhachSan.HienThiDanhSachLuotThue();
-            QuayLai();
+            QuayLai();}
             break;
         case TRA_PHONG:
-            QuanLyKhachSan.TraPhong();
-            QuayLai();
+{            QuanLyKhachSan.TraPhong();
+            QuayLai();}
             break;
         case HIEN_THI_DANH_SACH_PHONG:
-            QuanLyKhachSan.HienThiDanhSachPhong();
-            QuayLai();
+{            QuanLyKhachSan.HienThiDanhSachPhong();
+            QuayLai();}
             break;
         case HIEN_THI_DANH_SACH_KHACH_HANG:
-            QuanLyKhachSan.HienThiDanhSachKhachHang();
-            QuayLai();
+{            QuanLyKhachSan.HienThiDanhSachKhachHang();
+            QuayLai();}
             break;
         case HIEN_THI_DANH_SACH_LUOT_THUE:
-            QuanLyKhachSan.HienThiDanhSachLuotThue();
-            QuayLai();
+{            QuanLyKhachSan.HienThiDanhSachLuotThue();
+            QuayLai();}
             break;
         case DONG_CHUONG_TRINH:
-            DongChuongTrinh = 0;
-            cout << "TAM BIET!";
+{            DongChuongTrinh = 0;
+            cout << "TAM BIET!";}
             break;
         default:
 
