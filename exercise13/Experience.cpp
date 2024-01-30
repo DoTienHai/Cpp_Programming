@@ -6,7 +6,7 @@ Experience::Experience() : expInYear(0)
     // Default constructor
 }
 
-Experience::Experience(const string &id, const string &fullName, const unsigned int &birthDay, const string &phone,
+Experience::Experience(const string &id, const string &fullName, const string &birthDay, const string &phone,
                        const string &email, EMPLOYEE_TYPE employeeType,
                        const int &expInYear, const string &proSkill)
     : Employee(id, fullName, birthDay, phone, email, employeeType), expInYear(expInYear), proSkill(proSkill)

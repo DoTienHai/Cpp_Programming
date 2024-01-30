@@ -13,7 +13,7 @@ private:
 
 public:
     Experience();
-    Experience(const string &id, const string &fullName, const unsigned int &birthDay, const string &phone,
+    Experience(const string &id, const string &fullName, const string &birthDay, const string &phone,
                const string &email, EMPLOYEE_TYPE employeeType,
                const int &expInYear, const string &proSkill);
     ~Experience();

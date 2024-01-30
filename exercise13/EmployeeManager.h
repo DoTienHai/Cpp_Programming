@@ -2,6 +2,7 @@
 #define EMPLOYEE_MANAGER_H
 #include <iostream>
 #include <vector>
+#include <regex>
 #include "Experience.h"
 #include "Fresher.h"
 #include "Intern.h"

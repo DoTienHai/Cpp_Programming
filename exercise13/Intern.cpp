@@ -6,7 +6,7 @@ Intern::Intern() : semester(0)
     // Default constructor
 }
 
-Intern::Intern(const string &id, const string &fullName, const unsigned int &birthDay,
+Intern::Intern(const string &id, const string &fullName, const string &birthDay,
                const string &phone, const string &email, EMPLOYEE_TYPE employeeType,
                const string &major, const int &semester,
                const string &university)

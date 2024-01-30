@@ -23,7 +23,7 @@ private:
 
 public:
     Fresher();
-    Fresher(const string &id, const string &fullName, const unsigned int &birthDay,
+    Fresher(const string &id, const string &fullName, const string &birthDay,
             const string &phone, const string &email, EMPLOYEE_TYPE employeeType,
             const unsigned int &graduationDate,
             const GRADUATION_RANK &graduationRank, const string &education);

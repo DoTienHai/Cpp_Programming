@@ -1,17 +1,33 @@
 #include "EmployeeManager.h"
 
-bool validDateTime(string dateTime){
+// input format yyyy-mm-dd
+bool isValidDateTime(string dateString)
+{
 
+    tm timeInfo = {};
+    istringstream dateStream(dateString);
+
+    // Parse the string into a tm structure
+    dateStream >> get_time(&timeInfo, "%Y-%m-%d");
+    // Check for pStream arsing errors
+    return !dateStream.fail();
 }
-bool validPhone(string phone){
+bool isValidPhoneNumber(const string &phoneNumber)
+{
+    // Regular expression for a basic phone number validation (international format)
+    const regex pattern(R"(\d{1,})");
 
+    // Use regex_match to check if the phoneNumber matches the pattern
+    return regex_match(phoneNumber, pattern);
 }
-bool validEmail(string email){
+bool isValidEmail(const string &email)
+{
+    // Regular expression for a basic email validation
+    const regex pattern(R"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})");
 
+    // Use regex_match to check if the email matches the pattern
+    return regex_match(email, pattern);
 }
-
-
-
 
 EmployeeManager::EmployeeManager()
 {
@@ -32,8 +48,7 @@ void EmployeeManager::addEmployee()
 {
     string ID = "123";
     string fullName;
-    string birthdayString;
-    unsigned int birthDay = 12412;
+    string birthDay;
     string phone;
     string email;
     int employeeType;
@@ -41,13 +56,28 @@ void EmployeeManager::addEmployee()
     cout << "Enter employee's full name." << endl;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, fullName);
-    cout << "Enter employee's birthday. Follow format dd/mm/yyyy." << endl;
-    cin >> birthdayString;
+    cout << "Enter employee's birthday. Follow format yyyy-mm-dd." << endl;
+    cin >> birthDay;
+    if (!isValidDateTime(birthDay))
+    {
+        cout << "Invalid date time format!" << endl;
+        return;
+    }
     cout << "Enter employee's phone." << endl;
     cin >> phone;
+    if (!isValidPhoneNumber(phone))
+    {
+        cout << "Invalid phone number format!" << endl;
+        return;
+    }
     ID = phone;
     cout << "Enter employee's email." << endl;
     cin >> email;
+    if (!isValidEmail(email))
+    {
+        cout << "Invalid email format!" << endl;
+        return;
+    }
     cout << "Enter employee's type." << endl;
     cout << EXPERIENCE << ". Experience." << endl;
     cout << FRESHER << ". Fresher." << endl;
@@ -73,7 +103,7 @@ void EmployeeManager::addEmployee()
         unsigned int graduationDate;
         int graduationRank;
         string education;
-        cout << "Enter employee's Graduation date. Follow format dd/mm/yyyy." << endl;
+        cout << "Enter employee's Graduation date. Follow format yyyy-mm-dd." << endl;
         cin >> graduationDate;
         cout << "Enter employee's graduation rank." << endl;
         cout << EXCELLENT << ". Excellent." << endl;

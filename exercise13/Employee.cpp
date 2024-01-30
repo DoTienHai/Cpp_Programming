@@ -6,7 +6,7 @@ Employee::Employee() : birthDay(0), employeeType(EXPERIENCE)
 {
     employeeCount++;
 }
-Employee::Employee(const string &id, const string &fullName, const unsigned int &birthDay,
+Employee::Employee(const string &id, const string &fullName, const string &birthDay,
                    const string &phone, const string &email, EMPLOYEE_TYPE employeeType)
     : ID(id), fullName(fullName), birthDay(birthDay), phone(phone), email(email),
       employeeType(employeeType)
@@ -23,7 +23,7 @@ string Employee::getFullName() const
     return fullName;
 }
 
-unsigned int Employee::getBirthDay() const
+string Employee::getBirthDay() const
 {
     return birthDay;
 }
@@ -63,7 +63,7 @@ void Employee::setFullName(const string &fullName)
     this->fullName = fullName;
 }
 
-void Employee::setBirthDay(const unsigned int &birthDay)
+void Employee::setBirthDay(const string &birthDay)
 {
     this->birthDay = birthDay;
 }

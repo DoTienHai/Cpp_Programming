@@ -20,7 +20,7 @@ private:
     /* data */
     string ID;
     string fullName;
-    unsigned int birthDay;
+    string birthDay;
     string phone;
     string email;
     EMPLOYEE_TYPE employeeType;
@@ -29,14 +29,14 @@ private:
 
 public:
     Employee(/* args */);
-    Employee(const string &id, const string &fullName, const unsigned int &birthDay,
+    Employee(const string &id, const string &fullName, const string &birthDay,
              const string &phone, const string &email, EMPLOYEE_TYPE employeeType);
     virtual ~Employee(){};
 
     // Getter methods
     string getID() const;
     string getFullName() const;
-    unsigned int getBirthDay() const;
+    string getBirthDay() const;
     string getPhone() const;
     string getEmail() const;
     EMPLOYEE_TYPE getEmployeeType() const;
@@ -46,7 +46,7 @@ public:
     // Setter methods
     void setID(const string &id);
     void setFullName(const string &fullName);
-    void setBirthDay(const unsigned int &birthDay);
+    void setBirthDay(const string &birthDay);
     void setPhone(const string &phone);
     void setEmail(const string &email);
     void setEmployeeType(const EMPLOYEE_TYPE &type);

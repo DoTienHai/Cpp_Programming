@@ -7,7 +7,7 @@ Fresher::Fresher() : graduationDate(0), graduationRank(EXCELLENT)
     // Default constructor
 }
 
-Fresher::Fresher(const string &id, const string &fullName, const unsigned int &birthDay,
+Fresher::Fresher(const string &id, const string &fullName, const string &birthDay,
                  const string &phone, const string &email, EMPLOYEE_TYPE employeeType, const unsigned int &graduationDate,
                  const GRADUATION_RANK &graduationRank, const string &education)
     : Employee(id, fullName, birthDay, phone, email, employeeType),

@@ -14,7 +14,7 @@ private:
 
 public:
     Intern();
-    Intern(const string &id, const string &fullName, const unsigned int &birthDay,
+    Intern(const string &id, const string &fullName, const string &birthDay,
            const string &phone, const string &email, EMPLOYEE_TYPE employeeType,
            const string &major, const int &semester,
            const string &university);
