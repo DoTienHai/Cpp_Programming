@@ -2,6 +2,8 @@
 #define EMPLOYEE_H
 #include <iostream>
 #include <vector>
+#include <iomanip>
+#include <string>
 #include "Certificate.h"
 using namespace std;
 
@@ -54,8 +56,5 @@ public:
     virtual void showMe() = 0;
 };
 
-
-// extern int Employee::employeeCount;
-// Employee::employeeCount = 0;
 
 #endif // !EMPLOYEE_H

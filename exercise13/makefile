@@ -15,7 +15,7 @@ TARGET = main
 # Phần biên dịch
 all: $(TARGET) clean
 	main.exe
-	
+
 
 $(TARGET): $(OBJECTS)
 	@$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)

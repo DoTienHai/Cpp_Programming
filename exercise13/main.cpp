@@ -50,21 +50,28 @@ int main()
         case ADD_EMPLOYEE:
         {
             manager.addEmployee();
-
             manager.display();
             back();
         }
         break;
-
         case UPDATE_EMPLOYEE:
         {
+            manager.updateEmployee();
+            // manager.display();
+            back();
         }
         break;
         case DELETE_EMPLOYEE:
         {
+            manager.deleteEmploy();
+            manager.display();
+            back();
         }
         case SEARCH_EMPLOYEE:
         {
+            manager.deleteEmploy();
+            manager.display();
+            back();
         }
         break;
             break;

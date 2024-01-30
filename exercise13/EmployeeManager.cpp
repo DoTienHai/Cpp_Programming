@@ -1,5 +1,18 @@
 #include "EmployeeManager.h"
 
+bool validDateTime(string dateTime){
+
+}
+bool validPhone(string phone){
+
+}
+bool validEmail(string email){
+
+}
+
+
+
+
 EmployeeManager::EmployeeManager()
 {
     // Constructor
@@ -26,11 +39,13 @@ void EmployeeManager::addEmployee()
     int employeeType;
 
     cout << "Enter employee's full name." << endl;
-    cin >> fullName;
-    cout << "Enter employee's birthday dd/mm/yy." << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, fullName);
+    cout << "Enter employee's birthday. Follow format dd/mm/yyyy." << endl;
     cin >> birthdayString;
     cout << "Enter employee's phone." << endl;
     cin >> phone;
+    ID = phone;
     cout << "Enter employee's email." << endl;
     cin >> email;
     cout << "Enter employee's type." << endl;
@@ -58,7 +73,7 @@ void EmployeeManager::addEmployee()
         unsigned int graduationDate;
         int graduationRank;
         string education;
-        cout << "Enter employee's Graduation date dd/mm/yy." << endl;
+        cout << "Enter employee's Graduation date. Follow format dd/mm/yyyy." << endl;
         cin >> graduationDate;
         cout << "Enter employee's graduation rank." << endl;
         cout << EXCELLENT << ". Excellent." << endl;
@@ -92,7 +107,22 @@ void EmployeeManager::addEmployee()
     break;
     }
 }
-void EmployeeManager::updateEmployee() {}
+void EmployeeManager::updateEmployee()
+{
+    string ID;
+    display();
+    cout << "Enter employee's ID want to update." << endl;
+    cin >> ID;
+    auto it = searchEmployee(ID);
+    if (it != employeeTable.end())
+    {
+        (*it)->showMe();
+    }
+    else
+    {
+        cout << "Infomation not found!" << endl;
+    }
+}
 void EmployeeManager::deleteEmploy()
 {
     string ID;
@@ -110,6 +140,24 @@ void EmployeeManager::deleteEmploy()
         cout << "ID not found!" << endl;
     }
 }
+
+void EmployeeManager::searchEmployee()
+{
+    string ID;
+    display();
+    cout << "Enter employee's ID want to delete." << endl;
+    cin >> ID;
+    vector<Employee *>::iterator it = searchEmployee(ID);
+    if (it != employeeTable.end())
+    {
+        employeeTable.erase(it);
+        cout << "Deleted!" << endl;
+    }
+    else
+    {
+        cout << "Infomation not found!" << endl;
+    }
+}
 vector<Employee *>::iterator EmployeeManager::searchEmployee(string ID)
 {
     for (vector<Employee *>::iterator it = employeeTable.begin(); it != employeeTable.end(); ++it)
@@ -125,26 +173,41 @@ vector<Employee *>::iterator EmployeeManager::searchEmployee(string ID)
 void EmployeeManager::display()
 {
     system("clear");
-    for (Employee *employeePtr : employeeTable)
+    if (employeeTable.size() != 0)
     {
-        employeePtr->showMe();
-        cout << endl;
+        for (Employee *employeePtr : employeeTable)
+        {
+            employeePtr->showMe();
+            cout << endl;
+        }
+    }
+    else
+    {
+        cout << "No employee!" << endl;
     }
 }
 void EmployeeManager::displayExperience()
 {
     system("clear");
+    int count = 0;
     for (Employee *employeePtr : employeeTable)
     {
         if (employeePtr->getEmployeeType() == EXPERIENCE)
         {
             employeePtr->showMe();
             cout << endl;
+            count++;
         }
+    }
+    if (count == 0)
+    {
+        cout << "No Experience!" << endl;
     }
 }
 void EmployeeManager::displayFresher()
 {
+    int count = 0;
+
     for (Employee *employeePtr : employeeTable)
     {
         system("clear");
@@ -152,18 +215,29 @@ void EmployeeManager::displayFresher()
         {
             employeePtr->showMe();
             cout << endl;
+            count++;
         }
+    }
+    if (count == 0)
+    {
+        cout << "No Fresher!" << endl;
     }
 }
 void EmployeeManager::displayIntern()
 {
     system("clear");
+    int count = 0;
     for (Employee *employeePtr : employeeTable)
     {
         if (employeePtr->getEmployeeType() == INTERN)
         {
             employeePtr->showMe();
             cout << endl;
+            count++;
         }
+    }
+    if (count == 0)
+    {
+        cout << "No Intern!" << endl;
     }
 }

@@ -20,6 +20,7 @@ public:
     void addEmployee();
     void updateEmployee();
     void deleteEmploy();
+    void searchEmployee();
     vector<Employee*>::iterator searchEmployee(string ID);
 
     void display();
