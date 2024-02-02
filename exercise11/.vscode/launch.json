@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/FPT/C++/Cpp_Programming/exercise5_v2",
-      "program": "d:/FPT/C++/Cpp_Programming/exercise5_v2/build/Debug/outDebug",
+      "cwd": "d:/FPT/C++/Cpp_Programming/exercise11",
+      "program": "d:/FPT/C++/Cpp_Programming/exercise11/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

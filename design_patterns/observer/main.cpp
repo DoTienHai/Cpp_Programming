@@ -105,7 +105,7 @@ public:
     void setStatus(string newStatus)
     {
         status = newStatus;
-        observerController->notification("The door has a new status: \"" + newStatus + "\".");
+        observerController->notification("The door has a new status: \"" + newStatus + "\"");
     }
     string getStatus()
     {
@@ -120,7 +120,7 @@ int main()
     myDoor.setStatus("hello");
 
     cout << endl
-         << "regis 3 observer: " << endl;
+         << "regis 3 observers: " << endl;
     myDoor.getObserverController()->regisObserver(new Observer1("MY SON"));
     myDoor.getObserverController()->regisObserver(new Observer2("MY HUSBAND"));
     myDoor.getObserverController()->regisObserver(new Observer1("MY NEIGHBORHOOD"));

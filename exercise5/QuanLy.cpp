@@ -14,11 +14,13 @@ void QuanLy::ThemKhachHang()
     int Tuoi;
     string CCCD;
     cout << "Moi nhap ten khach hang: ";
-    cin >> HoTen;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, HoTen);
     cout << "Moi nhap tuoi khach hang: ";
     cin >> Tuoi;
     cout << "Moi nhap so CCCD khach hang: ";
-    cin >> CCCD;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, CCCD);
     DanhSachKhachHang.push_back(Nguoi(HoTen, Tuoi, CCCD));
 }
 void QuanLy::XoaKhachHang()
@@ -26,7 +28,8 @@ void QuanLy::XoaKhachHang()
     string CCCD;
     this->HienThiDanhSachKhachHang();
     cout << "Nhap CCCD cua khach hang muon xoa." << endl;
-    cin >> CCCD;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, CCCD);
     vector<Nguoi>::iterator it = this->TimKiemKhachHang(CCCD);
     if (it != this->DanhSachKhachHang.end())
     {
@@ -60,8 +63,8 @@ void QuanLy::ThemLuotThue()
     Phong *PhongThue = nullptr;
 
     cout << "Moi nhap CCCD de xac dinh khach hang da toi day chua." << endl;
-    cin >> CCCD;
-
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, CCCD);
     vector<Nguoi>::iterator itKhachHang = this->TimKiemKhachHang(CCCD);
     if (itKhachHang == this->DanhSachKhachHang.end())
     {
@@ -69,7 +72,8 @@ void QuanLy::ThemLuotThue()
         string HoTen;
         int Tuoi;
         cout << "Moi nhap ten khach hang: ";
-        cin >> HoTen;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, HoTen);
         cout << "Moi nhap tuoi khach hang: ";
         cin >> Tuoi;
         this->DanhSachKhachHang.push_back(Nguoi(HoTen, Tuoi, CCCD));
@@ -80,7 +84,8 @@ void QuanLy::ThemLuotThue()
     system("cls");
     this->HienThiDanhSachPhong();
     cout << "Nhap ma so phong muon thue: " << endl;
-    cin >> MaSoPhong;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, MaSoPhong);
     if (KhachSanABC.TimKiemPhong(MaSoPhong) != this->KhachSanABC.GetPhongTheoLoaiA().end())
     {
         PhongThue = &(*KhachSanABC.TimKiemPhong(MaSoPhong));
@@ -90,10 +95,14 @@ void QuanLy::ThemLuotThue()
             auto now = chrono::time_point_cast<chrono::seconds>(chrono::system_clock::now());
             time_t currentTime = chrono::system_clock::to_time_t(now);
             this->DanhSachLuotThue.push_back(LuotThue(khachHang, PhongThue, currentTime, currentTime));
-        }else{
+        }
+        else
+        {
             cout << "Phong da co nguoi thue." << endl;
         }
-    }else{
+    }
+    else
+    {
         cout << "Nhap sai ma phong." << endl;
     }
 }
@@ -102,7 +111,8 @@ void QuanLy::XoaLuotThue()
     string MaLuot;
     this->HienThiDanhSachLuotThue();
     cout << "Nhap ma luoi muon xoa." << endl;
-    cin >> MaLuot;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, MaLuot);
     vector<LuotThue>::iterator it = this->TimKiemLuotThue(MaLuot);
     if (it != this->DanhSachLuotThue.end())
     {
@@ -120,7 +130,8 @@ void QuanLy::TraPhong()
     string MaLuot;
     this->HienThiDanhSachLuotThue();
     cout << "Nhap ma luoi muon thanh toan." << endl;
-    cin >> MaLuot;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, MaLuot);
     vector<LuotThue>::iterator it = this->TimKiemLuotThue(MaLuot);
     if (it != this->DanhSachLuotThue.end())
     {
